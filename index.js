@@ -22,8 +22,8 @@ const upload = multer({storage: storageEngine});
 
 app.route('/')
 .get( async (req, res) => {
-  const data = await Product.findAll();
-  res.send(data);
+  // const data = await Product.findAll();
+  res.send('home');
 });
 
 app.route('/updatetable')
