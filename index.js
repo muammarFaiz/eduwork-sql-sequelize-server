@@ -12,6 +12,7 @@ app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(database2);
+app.use(express.static(__dirname + '/client'));
 
 const storageEngine = multer.diskStorage({
   destination: (req, file, cb) => {cb(null, './uploads');},
@@ -23,22 +24,23 @@ const upload = multer({storage: storageEngine});
 app.route('/')
 .get( async (req, res) => {
   // const data = await Product.findAll();
-  res.send('home');
+  res.sendFile(__dirname + '/client/index.html');
 });
 
 app.route('/updatetable')
 .post(upload.single('image'), async (req, res) => {
-  let {userid, name, price, stock, status} = req.body;
+  let {name, price, stock, status} = req.body;
   const image = req.file;
   if(image) {
     try {
-      const result = await Product.create({userid, name, price, stock, status,
+      const result = await Product.create({userid: (Date.now()+'').slice(3, 10), name, price, stock, status,
         imageurl: 'http://localhost:3001/showimage/' + image.filename});
       res.send(result);
     } catch(err) {res.send(err);}}
 })
 .delete( async (req, res) => {
   let {name} = req.body;
+  console.log(req.body);
   try {
     const result = await Product.destroy({where: {name: name}});
     const toshare = '' + result;
@@ -54,8 +56,9 @@ app.route('/updateproduct')
   } catch(err) {res.send(err);}
 })
 .patch( async (req, res) => {
+  console.log(req.query);
   try {
-    const result = Product.update({price: req.query.newprice}, {where: {id: req.query.productid}});
+    const result = Product.update({price: req.query.newprice}, {where: {name: req.query.name}});
     res.send(result);
   } catch(err) {res.send(err);}
 });

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./master.css">
+  </head>
+  <body>
+    <form class="" action="/updatetable" enctype="multipart/form-data" method="post">
+      <input type="text" name="name" value="" placeholder="name: string">
+      <input type="text" name="price" value="" placeholder="price: number">
+      <input type="text" name="stock" value="" placeholder="stock: number">
+      <input type="text" name="status" value="" placeholder="status: boolean">
+      <input type="file" name="image" value="">
+      <button type="submit" name="button">Submit</button>
+    </form>
+    <form id="searchform">
+      <input id="searchinput" type="text" name="name" value="" placeholder="product name">
+      <button type="submit" name="buttonsearch">Search</button>
+    </form>
+    <p id="search_res"></p>
+    <form id="del">
+      <input id="delinput" type="text" name="name" value="" placeholder="product name">
+      <button type="submit" name="buttonDel">Delete</button>
+    </form>
+    <p id="del_res"></p>
+    <form id="updateform">
+      <input id="updateinput_name" type="text" name="name" value="" placeholder="product name">
+      <input id="updateinput_price" type="text" name="price" value="" placeholder="set new price here">
+      <button type="submit" name="buttonupdate">Update</button>
+    </form>
+    <p id="update_res"></p>
+    <script type="text/javascript" src="./script.js"></script>
+  </body>
+</html>
