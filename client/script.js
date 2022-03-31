@@ -6,7 +6,7 @@ const searchinput = document.getElementById('searchinput');
 const search_res = document.getElementById('search_res');
 const updateform = document.getElementById('updateform');
 const updateinput_name = document.getElementById('updateinput_name');
-const updateinput_price = document.getElementById('updateinput_price');
+const updateinput_site = document.getElementById('updateinput_site');
 
 delform.addEventListener('submit', event => {
   event.preventDefault();
@@ -43,7 +43,7 @@ searchform.addEventListener('submit', event => {
 
 updateform.addEventListener('submit', event => {
   event.preventDefault();
-  const query = `?name=${updateinput_name.value}&newprice=${updateinput_price.value}`;
+  const query = `?name=${updateinput_name.value}&newsite=${updateinput_site.value}`;
   // fetch PATCH is case sensitive
   fetch('/updateproduct' + query, {method: 'PATCH'})
   .then(res => res.text(), err => console.log(err))
