@@ -41,6 +41,7 @@ searchform.addEventListener('submit', event => {
   search(searchinput.value);
 });
 
+// update doc
 updateform.addEventListener('submit', event => {
   event.preventDefault();
   const query = `?name=${updateinput_name.value}&newsite=${updateinput_site.value}`;
